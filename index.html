@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#080a0b" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="CLEAN FORM" />
+    <link rel="manifest" href="manifest.webmanifest" />
+    <link rel="apple-touch-icon" href="assets/clean-form-logo.png" />
+    <link rel="stylesheet" href="styles.css" />
+    <title>CLEAN FORM</title>
+  </head>
+  <body>
+    <main class="app-shell">
+      <header class="topbar">
+        <button class="brand" data-tab="home" aria-label="Accueil CLEAN FORM">
+          <img class="brand-mark" src="assets/clean-form-logo.png" alt="" /><span>CLEAN <b>FORM</b></span>
+        </button>
+        <button class="profile" data-action="open-profiles" aria-label="Changer de profil">CB</button>
+      </header>
+      <section id="screen" class="screen" aria-live="polite"></section>
+      <nav class="tabbar" aria-label="Navigation principale">
+        <button data-tab="home" class="active"><i>⌂</i><span>Accueil</span></button>
+        <button data-tab="train"><i>＋</i><span>Entraîner</span></button>
+        <button data-tab="history"><i>◷</i><span>Historique</span></button>
+        <button data-tab="goals"><i>◉</i><span>Quêtes</span></button>
+        <button data-tab="more"><i>•••</i><span>Plus</span></button>
+      </nav>
+    </main>
+    <dialog id="feelingDialog">
+      <form method="dialog" id="feelingForm">
+        <div class="sheet-handle"></div>
+        <p class="eyebrow">FIN DE SÉANCE</p>
+        <h2>Comment tu te sens, chef_blade ?</h2>
+        <p class="muted">Le ressenti n’influence pas tes calculs. Il garde juste une trace du contexte.</p>
+        <div class="feeling-grid">
+          <button value="Épuisé" name="feeling">😵<span>Épuisé</span></button>
+          <button value="Fatigué" name="feeling">😮‍💨<span>Fatigué</span></button>
+          <button value="Normal" name="feeling">🙂<span>Normal</span></button>
+          <button value="En forme" name="feeling">⚡<span>En forme</span></button>
+        </div>
+        <label>Note libre<textarea id="feelingNote" placeholder="Ex. pas beaucoup d'énergie mais bonnes barres"></textarea></label>
+        <button value="close" class="primary wide">Enregistrer le ressenti</button>
+      </form>
+    </dialog>
+    <dialog id="profileDialog">
+      <form method="dialog" id="profileForm">
+        <div class="sheet-handle"></div>
+        <p class="eyebrow">PROFILS</p>
+        <h2>La team Clean Form</h2>
+        <div id="profileChoices" class="profile-choices"></div>
+        <label>Ajouter un ami<input id="newProfileName" maxlength="20" placeholder="Prénom ou pseudo" /></label>
+        <button value="close" class="primary wide" data-action="add-profile">Ajouter au tableau</button>
+      </form>
+    </dialog>
+    <script src="history2026.js"></script>
+    <script src="app.js"></script>
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => navigator.serviceWorker.register('./service-worker.js'));
+      }
+    </script>
+  </body>
+</html>
